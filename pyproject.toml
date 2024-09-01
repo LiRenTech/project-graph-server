@@ -1,0 +1,34 @@
+[project]
+name = "project-graph-server"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [{ name = "zty012", email = "me@zty012.de" }]
+dependencies = []
+requires-python = "<3.14,>=3.12"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+
+[project.gui-scripts]
+# 使用pipx安装这个包后，可以用这个命令运行程序
+project-graph-server = "project_graph_server.__main__:main"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 88
+target-version = ['py36', 'py37', 'py38']
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.scripts]
+start = { call = "project_graph_server.__main__:main" }
+package = { call = "package:main" }
+
+[tool.pdm.dev-dependencies]
+package = ["pyinstaller>=6.10.0"]
